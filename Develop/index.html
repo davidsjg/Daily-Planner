@@ -34,16 +34,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 
-
-
-    
-  
-  
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
           let hours = [9,10,11,12,1,2,3,4,5]
       $(document).ready(function() {
 
+        let time = new Date($.now());
+        console.log(time)
+
+        var currentdate = new Date(); 
+        var datetime =  currentdate.getHours() + "."  
+                + currentdate.getMinutes()
+
+        // var curTime = parseInt(datetime)
+        var curTime = parseFloat(datetime).toFixed(2)
+        console.log(curTime)
+
+
+
+        console.log(datetime)
 
         
         $.each(hours, function(i, hour) {
@@ -54,12 +63,6 @@
           console.log(hourTemp)
           console.log(activityTemp)
 
-
-
-          // console.log($("#hour" + hour + "input").val(localStorage.getItem(JSON.parse("hour" + hour))))
-
-          // localStorage.getItem(JSON.parse("hour" + hour))
-          // localStorage.getItem(JSON.parse("activity" + hour))
 
           jQuery('<div/>', {
           "id": 'hour'+hour,
@@ -90,6 +93,8 @@
             localStorage.setItem("activity"+hour, JSON.stringify(temp))
             
           });
+
+
 
 
           
