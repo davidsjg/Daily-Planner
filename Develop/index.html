@@ -95,20 +95,32 @@
             curTime = curTime-10
           }
 
+          console.log(hour)
+          console.log(curTime)
 
-          $(document).on('DOMNodeInserted', function(e) {
+          $("body").bind("DOMNodeInserted", function() {
             if (hour < curTime) {
-              $(e.target).addClass('past');
-            } else if (hour === curTime){
-              $(e.target).addClass('present');
-            }  else {
-            $(e.target).addClass('future');
+              $(this).find('.form-control').addClass('past');
+          } else if (hour === curTime){
+
+              $(this).find('.form-control').addClass('present');
+          } else {
+              $(this).find('.form-control').addClass('future');
+ 
           }
           });
 
-          console.log(typeof hour)
-          console.log(typeof curTime)
-          
+          // $(document).on('DOMNodeInserted', function(e) {
+          //   if (hour < curTime) {
+          //     $(e.target).addClass('past');
+          //   } else if (hour === curTime){
+          //     $(e.target).addClass('present');
+          //   }  else {
+          //   $(e.target).addClass('future');
+          // }
+          // });
+
+
           // if (hour < curTime) {
           //   'hour'+hour.addClass(".past")
           // } else {
