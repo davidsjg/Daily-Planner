@@ -43,11 +43,10 @@
         console.log(time)
 
         var currentdate = new Date(); 
-        var datetime =  currentdate.getHours() + "."  
-                + currentdate.getMinutes()
+        var datetime =  currentdate.getHours()
 
         // var curTime = parseInt(datetime)
-        var curTime = parseFloat(datetime).toFixed(2)
+        var curTime = parseInt(datetime)
         console.log(curTime)
 
 
@@ -60,8 +59,6 @@
 
           var hourTemp = JSON.parse(localStorage.getItem("hour"+hour))
           var activityTemp = JSON.parse(localStorage.getItem("activity"+hour))
-          console.log(hourTemp)
-          console.log(activityTemp)
 
 
           jQuery('<div/>', {
@@ -94,6 +91,31 @@
             
           });
 
+          if (curTime > 12) {
+            curTime = curTime-10
+          }
+
+
+          $(document).on('DOMNodeInserted', function(e) {
+            if (hour < curTime) {
+              $(e.target).addClass('past');
+            } else if (hour === curTime){
+              $(e.target).addClass('present');
+            }  else {
+            $(e.target).addClass('future');
+          }
+          });
+
+          console.log(typeof hour)
+          console.log(typeof curTime)
+          
+          // if (hour < curTime) {
+          //   'hour'+hour.addClass(".past")
+          // } else {
+          //   curDiv.addClass(".present")
+          // } 
+
+          // curDiv.addClass(".future")
 
 
 
