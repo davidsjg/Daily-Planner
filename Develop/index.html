@@ -28,11 +28,126 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
+    <div class="container" id="schedule">
       <!-- Timeblocks go here -->
-    </div>
+      <!-- <div class="input-group">
+        <span class="input-group-text">9AM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">10AM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">11AM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">12PM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">1PM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">2PM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">3PM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">4PM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">5PM</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+    </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+
+
+
+    
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+          let hours = [9,10,11,12,1,2,3,4,5]
+      $(document).ready(function() {
+
+
+        
+        $.each(hours, function(i, hour) {
+
+
+          var hourTemp = JSON.parse(localStorage.getItem("hour"+hour))
+          var activityTemp = JSON.parse(localStorage.getItem("activity"+hour))
+          console.log(hourTemp)
+          console.log(activityTemp)
+
+
+
+          // console.log($("#hour" + hour + "input").val(localStorage.getItem(JSON.parse("hour" + hour))))
+
+          // localStorage.getItem(JSON.parse("hour" + hour))
+          // localStorage.getItem(JSON.parse("activity" + hour))
+
+          jQuery('<div/>', {
+          "id": 'hour'+hour,
+          "class": 'input-group',
+          }).appendTo('.container');
+
+          jQuery('<span/>', {
+          "class": "input-group-text",
+          "placeholder": "enter text",
+          "text": hour + "AM",
+          }).appendTo('#hour'+hour);
+    
+
+          jQuery('<textarea/>', {
+          "class": "form-control",
+          "aria-label": "With textarea",
+          "id": "hour" + hour + "input",
+          // "placeholder": "enter to do action",
+
+          }).appendTo('#hour'+hour);
+
+          jQuery('<button/>', {
+          "class": "button",
+          "text": "SAVE",
+          }).appendTo('#hour'+hour).on("click", function() {
+            let temp = $("#hour" + hour + "input").val()
+            localStorage.setItem("hour"+hour, JSON.stringify(hour))
+            localStorage.setItem("activity"+hour, JSON.stringify(temp))
+            
+          });
+
+
+          
+          $("#hour" + hour + "input").text(activityTemp)
+        
+
+   
+
+
+        })
+
+
+      
+      })
+
+
+      </script>
+  
   </body>
 </html>
+
+
+
